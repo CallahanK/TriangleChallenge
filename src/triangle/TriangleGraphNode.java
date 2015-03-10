@@ -52,7 +52,8 @@ public class TriangleGraphNode {
 		this.visited = visited;
 	}
 
-	/**Adds a new node to this node's parents array
+	/**
+	 * Adds a new node to this node's parents array
 	 * Should only be used by insert
 	 * 
 	 * @param newParent the node to be added to the parents array
@@ -60,7 +61,8 @@ public class TriangleGraphNode {
 	public void addParent(TriangleGraphNode newParent){
 		parents.add(newParent);
 	}
-	/**Adds a newChild to this node's child array
+	/**
+	 * Adds a newChild to this node's child array
 	 * and makes this node a parent of newChild
 	 * 
 	 * @param newChild the new child node to be added to this node's children array
@@ -88,6 +90,10 @@ public class TriangleGraphNode {
 		this.children = children;
 	}
 
+	/**
+	 * Returns the left child if it exists
+	 * @return
+	 */
 	public TriangleGraphNode getChildL(){
 		if (!hasChildren()) {
             return null;
@@ -95,7 +101,10 @@ public class TriangleGraphNode {
             return this.children.get(0);
         }
 	}	
-	
+	/**
+	 * Returns the right child if it exists
+	 * @return
+	 */
 	public TriangleGraphNode getChildR(){
 		if (!hasChildren()) {
             return null;
@@ -104,28 +113,18 @@ public class TriangleGraphNode {
         }
 	}
 	
-	
-	public TriangleGraphNode getParentL(){
-		if (this.parents.get(0) == null) {
-            return null;
-        } else {
-            return this.parents.get(0);
-        }
-	}	
-	
-	public TriangleGraphNode getParentR(){
-		if (this.parents.get(1) == null) {
-            return null;
-        } else {
-            return this.parents.get(1);
-        }
-	}
-	
-	
+	/**
+	 * Returns true if the node has children
+	 * @return
+	 */
 	public Boolean hasChildren(){
 		return !(getChildCount()==0);
 	}
 	
+	/**
+	 * Returns the number of children a node has
+	 * @return
+	 */
 	public int getChildCount() {
         if (getChildren() == null) {
             return 0;
@@ -134,6 +133,10 @@ public class TriangleGraphNode {
         }
 	}
 	
+	/**
+	 * Returns true if the node is a leaf
+	 * @return
+	 */
 	public boolean isLeaf(){
 		return (getChildCount() == 0);
 	}
@@ -154,6 +157,11 @@ public class TriangleGraphNode {
 		return node;
 	}
 	
+	/**
+	 * Returns the child node at a particular index
+	 * @param index The desired index to get the child node from
+	 * @return
+	 */
 	public TriangleGraphNode getChildAt(int index) {
 	        if (getChildren() == null) {
 	            throw new ArrayIndexOutOfBoundsException("node has no children");
@@ -161,6 +169,10 @@ public class TriangleGraphNode {
 	        return (TriangleGraphNode)getChildren().get(index);
 	}
 	
+	/**
+	 * Returns a node's first child from its child array
+	 * @return
+	 */
 	public TriangleGraphNode getFirstChild() {
 	        if (getChildCount() == 0) {
 	            throw new NoSuchElementException("node has no children");
@@ -168,6 +180,10 @@ public class TriangleGraphNode {
 	        return getChildAt(0);
 	}
 	
+	/**
+	 * Returns a node's last child from its child array
+	 * @return
+	 */
 	public TriangleGraphNode getLastChild() {
 	        if (getChildCount() == 0) {
 	            throw new NoSuchElementException("node has no children");
