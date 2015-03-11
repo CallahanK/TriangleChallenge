@@ -59,6 +59,8 @@ public class TriangleMain {
 		    System.out.println("Total Rows: " + in.getLineNumber());
 		    in.close();
 		    
+		    System.out.println("First Leaf: " + root.getFirstLeaf().getValue());
+		    
 		    int maximumTotal = collapseGraph(root);
 		    System.out.println("Output: " + maximumTotal);
 			
@@ -89,8 +91,9 @@ public class TriangleMain {
 			
 			int returnVal = (int) node.getValue();
 			node.setVisited(true);
-			
-			return returnVal + Math.max(leftValue, rightValue);
+			returnVal = returnVal + Math.max(leftValue, rightValue);
+			node.setValue(returnVal);
+			return returnVal;
 		}
 	}
 	
